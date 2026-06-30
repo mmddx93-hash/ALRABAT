@@ -1,0 +1,1137 @@
+﻿<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+
+
+<head>
+
+
+
+  <meta charset="UTF-8">
+
+
+
+  <title>English Test Platform</title>
+
+
+
+  <link rel="stylesheet" href="style.css">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- 🌙  Dark Mode -->
+
+
+
+
+
+
+
+<button id="darkBtn">🌙 </button>
+
+
+
+<!-- ❔  Help -->
+
+
+
+<button id="infoBtn" onclick="document.getElementById('help').classList.add('active')">❔ </button>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 🏠 Home -->
+
+
+
+<button id="homeBtn" onclick="go('about')">🏠 </button>
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= 1. Welcome ================= -->
+
+
+
+<div class="page active" id="welcome">
+
+
+
+  <div class="card">
+
+
+
+    <h1>Al Rabat National University for English Testing & Learning</h1>
+
+<div class="cf-turnstile" data-sitekey="0x4AAAAAADX4OpZyGYDq5x_D"></div>
+
+
+    <button onclick="go('menu')">Next</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 2. Menu ================= -->
+
+
+
+<div class="page" id="menu">
+
+
+
+  <div class="card">
+
+
+
+    <button onclick="startMainExam()">Placement Test</button>
+
+
+
+    <button onclick="go('levels')">Level Exam</button>
+
+
+
+    <button onclick="go('lost')">Certificate Replacement</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 3. Exam ================= -->
+
+
+
+<div class="page" id="exam">
+
+
+
+  <div class="card">
+
+
+
+    <h2 id="question"></h2> 
+
+
+
+    <label><input type="radio" name="q" value="0"> <span id="a1"></span></label>
+
+
+
+    <label><input type="radio" name="q" value="1"> <span id="a2"></span></label>
+
+
+
+    <label><input type="radio" name="q" value="2"> <span id="a3"></span></label>
+
+
+
+    <div style="background:#ddd; border-radius:10px;">
+
+
+
+      <div id="timerBar"></div>
+
+
+
+    </div>
+
+
+
+    <p id="timer">20</p>
+
+
+
+    <button id="nextBtn" onclick="nextQuestion()">Next</button> 
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 4. Result ================= -->
+
+
+
+<div class="page" id="result">
+
+
+
+  <div class="card">
+
+
+
+    <h2>Result</h2>
+
+
+
+    <p>Your Score:</p>
+
+
+
+    <p id="score"></p>
+
+
+
+    <p>Your Level:</p>
+
+
+
+    <p id="level"></p>
+
+
+
+    <div id="review"></div>
+
+
+
+   <button onclick="goToForm()">Next</button> 
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 5. Form ================= -->
+
+
+
+<div class="page" id="form">
+
+
+
+  <form id="studentForm"> 
+
+
+
+    <div class="card">
+
+
+
+      <h2>Student Information</h2>
+
+
+
+
+
+
+
+      <label>Full Name</label>
+
+
+
+      <input type="text" name="name" id="name" required>
+
+
+
+
+
+
+
+      <label>Age</label>
+
+
+
+      <input type="number" name="age" id="age" required>
+
+
+
+
+
+
+
+      <label>Phone Number</label>
+
+
+
+      <input type="text" name="phone" id="phone" required>
+
+
+
+
+
+
+
+      <label>Education Level</label>
+
+
+
+      <select name="education" id="education" required>
+
+
+
+        <option value="">Select</option>
+
+
+
+        <option>Basic</option>
+
+
+
+        <option>Intermediate</option>
+
+
+
+        <option>Secondary</option>
+
+
+
+        <option>University</option>
+
+
+
+        <option>None</option>
+
+
+
+      </select>
+
+
+
+
+
+
+
+      <!-- 👇 نوع الامتحان -->
+
+
+
+      <input type="hidden" name="exam_type" id="examTypeInput">
+
+
+
+
+
+
+
+      <!-- 👇 عرض المستوى -->
+
+
+
+      <label>Your Level</label>
+
+
+
+      <input type="text" id="levelView" readonly>
+
+
+
+
+
+
+
+      <!-- 👇 المستوى اللي بيتبعت للسيرفر -->
+
+
+
+      <input type="hidden" name="level" id="levelInput">
+
+
+
+
+
+
+
+      <!-- 👇 السكور -->
+
+
+
+      <input type="hidden" name="score" id="scoreHidden">
+
+
+
+
+
+
+
+      <!-- 👇 عدد الأسئلة -->
+
+
+
+      <input type="hidden" name="total" id="totalInput"> 
+
+
+
+
+
+
+
+      <button type="submit">Continue</button>
+
+
+
+
+
+
+
+    </div>
+
+
+
+  </form>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 6. Payment ================= -->
+
+
+
+<div class="page" id="payment">
+
+
+
+  <div class="card">
+
+
+
+    <div class="checkout">
+
+
+
+      <h2>Bankak Payment</h2>
+
+
+
+<p id="price"></p> 
+
+
+
+      <div class="bank-box">
+
+
+
+        🏛️  Bankak Transfer
+
+
+
+      </div>
+
+
+
+      <div class="bankak-box">
+
+
+
+        <h2>BANKAK</h2>
+
+
+
+        <p>Account Number:</p>
+
+
+
+        <h3 id="accountNumber1">1234567</h3>
+
+
+
+        <button class="copy-btn" onclick="copyAccount()">Copy</button>
+
+
+
+        <input id="bankakId" placeholder="Enter Transaction ID" required /> 
+
+
+
+        <p class="pay-error"></p>
+
+
+
+        <button class="pay-btn" onclick="pay()">Confirm Payment</button>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 7. Success ================= -->
+
+
+
+<div class="page" id="success">
+
+
+
+  <div class="card">
+
+
+
+    <h2>Payment Successful ✅ </h2>
+
+
+
+    <div id="bookLink"></div>
+
+
+
+    <button onclick="afterSuccess()">Next</button> 
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 8. Video Page ================= -->
+
+
+
+<div class="page" id="videoPage">
+
+
+
+  <div class="card">
+
+
+
+    <h2>Watch Your Lesson  🎥</h2>
+
+
+
+ <iframe 
+
+
+
+  id="videoFrame" 
+
+
+
+  width="100%" 
+
+
+
+  height="250"
+
+
+
+  src=""
+
+
+
+  frameborder="0"
+
+
+
+  allow="autoplay; encrypted-media"
+
+
+
+  allowfullscreen
+
+
+
+></iframe>   
+
+
+
+    <br><br>
+
+
+
+    <button onclick="closeVideo()">Next</button>
+
+
+
+  </div>
+
+
+
+</div> 
+
+
+
+
+
+
+
+<div class="page" id="lostSuccess">
+
+
+
+  <div class="card">
+
+
+
+    <h2>Certificate Replacement Successful ✅</h2>
+
+
+
+    <p>Your request has been received.</p>
+
+
+
+    <p>We will contact you shortly on your phone.</p>
+
+
+
+    <button onclick="go('welcome')">Home</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 8. Fail ================= -->
+
+
+
+<div class="page" id="fail">
+
+
+
+  <div class="card">
+
+
+
+    <h2>Please try again later ❌ </h2>
+
+
+
+    <button onclick="go('welcome')">Home</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= 9. Levels ================= -->
+
+
+
+<div class="page" id="levels">
+
+
+
+  <div class="card">
+
+
+
+    <button onclick="startLevelExam('A')">A1 / A2</button>
+
+
+
+    <button onclick="startLevelExam('B')">B1 / B2</button>
+
+
+
+    <button onclick="startLevelExam('C')">C1 / C2</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 10. Lost ================= -->
+
+
+
+<div class="page" id="lost">
+
+
+
+  <div class="card">
+
+
+
+    <input type="text" placeholder="Phone Number" id="lostPhone">
+
+
+
+    <button onclick="goLostPayment()">Next</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= About ================= -->
+
+
+
+<div class="page" id="about">
+
+
+
+  <div class="card">
+
+
+
+    <h2>🚀  Platform Features</h2>
+
+
+
+    <div class="feature-box">
+
+
+
+      <h3>📊  Accurate Placement</h3>
+
+
+
+      <p>Smart test to determine your level precisely.</p>
+
+
+
+    </div>
+
+
+
+    <div class="feature-box">
+
+
+
+      <h3>🕛  Timer System</h3>
+
+
+
+      <p>Limited time for each question.</p>
+
+
+
+    </div>
+
+
+
+    <div class="feature-box">
+
+
+
+      <h3>📈  Result Analysis</h3>
+
+
+
+      <p>Full correction with strengths and weaknesses.</p>
+
+
+
+    </div>
+
+
+
+    <div class="feature-box">
+
+
+
+      <h3>🎥  Video Courses</h3>
+
+
+
+
+
+
+
+<p>Learn through YouTube courses based on your level.</p> 
+
+
+
+    </div>
+
+
+
+    <button onclick="go('welcome')">Back</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= 11. Lost Payment ================= -->
+
+
+
+<div class="page" id="lostPay">
+
+
+
+  <div class="card">
+
+
+
+    <div class="checkout">
+
+
+
+      <h2>Bankak Payment</h2>
+
+
+
+      <p class="amount">Amount Due: 3000 EGP</p>
+
+
+
+      <div class="bank-box">
+
+
+
+        🏛️ Bankak Transfer
+
+
+
+      </div>
+
+
+
+      <div class="bankak-box">
+
+
+
+        <h2>BANKAK</h2>
+
+
+
+        <p>Account Number:</p>
+
+
+
+        <h3 id="accountNumber2">1234567</h3> 
+
+
+
+        <button onclick="copyAccount()">Copy</button>
+
+
+
+        <input id="lostBankakId" placeholder="Enter Transaction ID" /> 
+
+
+
+        <p class="pay-error"></p>
+
+
+
+        <button class="pay-btn" onclick="pay()">Confirm Payment</button>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<!-- ================= Help Popup ================= -->
+
+
+
+<div id="help" onclick="closeHelp(event)">
+
+
+
+  <div class="card" onclick="event.stopPropagation()">
+
+
+
+    <h2>Need Help?</h2>
+
+
+
+    <p>Please use the following link to contact us:</p>
+
+
+
+    <a href="https://wa.me/qr/YBM7WBKJLDC5G1" target="_blank">
+
+
+
+  Contact via WhatsApp
+
+
+
+</a> 
+
+
+
+    <br><br>
+
+
+
+    <button onclick="document.getElementById('help').classList.remove('active')">
+
+
+
+      Close
+
+
+
+    </button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<!-- 🔐 Admin Login -->
+
+
+
+<div class="page" id="adminLogin">
+
+
+
+  <div class="card">
+
+
+
+    <h2>Admin Login</h2>
+
+
+
+    <input type="password" id="adminPass" placeholder="Enter Password">
+
+
+
+    <p id="loginError" style="color:red;"></p>
+
+
+
+    <button onclick="checkAdmin()">Next</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- 📊 Admin Panel -->
+
+
+
+<div class="page" id="adminPanel">
+
+
+
+  <div class="card">
+
+
+
+    <h2>Users Data</h2>
+
+
+
+    <div id="usersData"></div>
+
+
+
+    <button onclick="go('welcome')">Next</button>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- 🗂️ زر الملفات -->
+
+
+
+<button id="filesBtn" onclick="go('adminLogin')">🗂️</button> 
+
+<script type="module" src="supabase.js"></script>
+
+<script type="module" src="script.js"></script>
+
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+

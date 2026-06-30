@@ -1,0 +1,968 @@
+﻿html {
+  font-size: 16px;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+
+  margin: 0;
+
+  font-family: "Cairo", sans-serif;
+
+  background: linear-gradient(to bottom, #eef2f7, #e3eaf3);
+
+  min-height: 100vh;
+
+  direction: ltr;
+
+  transition: 0.3s;
+
+overflow-x: hidden;
+}
+
+
+
+/* ================= الصفحات ================= */
+
+.page {
+
+  display: none;
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition: 0.4s;
+
+  width: 100%;
+
+}
+
+
+
+.page.active {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+@media (max-width: 600px) {
+  .page.active {
+    align-items: flex-start;
+    padding: 70px 10px 20px;
+  }
+}
+
+
+
+
+
+/* ================= الكارد ================= */
+
+
+.card {
+
+  background: #ffffff;
+
+  padding: 2rem 1.2rem;
+
+  border-radius: 1.2rem;
+
+  width: 90%;
+
+  max-width: 37.5rem; /* 600px */
+
+  margin: auto;
+
+  text-align: center;
+
+  box-shadow: 0 0.9rem 1.8rem rgba(0,0,0,0.1);
+
+  overflow-x: hidden;
+
+  box-sizing: border-box;
+
+  transition: 0.3s;
+
+}
+
+
+/* ================= العناوين ================= */
+
+h1, h2 {
+
+  color: #d48b1f;
+
+  margin-bottom: 15px;
+
+  line-height: 1.6;
+
+}
+
+h1 { font-size: 22px; }
+
+h2 { font-size: 19px; }
+
+
+
+/* ================= السؤال ================= */
+
+#question {
+
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  margin-bottom: 15px;
+
+  word-break: break-word;
+
+}
+
+
+
+/* ================= الاختيارات ================= */
+
+label {
+
+  display: block;
+
+  text-align: left;
+
+  margin: 10px 0;
+
+  padding: 12px;
+
+  background: #f5f7fb;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  border: 1px solid transparent;
+
+}
+
+
+
+label:hover {
+
+  background: #fff3dc;
+
+}
+
+
+
+/* عند الاختيار */
+
+input[type="radio"]:checked + span {
+
+  font-weight: bold;
+
+  color: #d48b1f;
+
+}
+
+
+
+/* ================= الراديو ================= */
+
+input[type="radio"] {
+
+  margin-right: 8px;
+
+  cursor: pointer;
+
+}
+
+
+
+/* ================= الأزرار ================= */
+
+button {
+
+  width: 100%;
+
+  padding: 15px;
+
+  margin-top: 12px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: linear-gradient(45deg, #d48b1f, #f3b44a);
+
+  color: #fff;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+}
+
+
+
+button:hover {
+
+  transform: scale(1.08);
+
+}
+
+
+
+/* ================= الفورم ================= */
+
+input {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 10px;
+
+  margin-top: 10px;
+
+  border-radius: 10px;
+
+  border: 1px solid #ddd;
+
+  outline: none;
+
+  transition: 0.3s;
+
+}
+
+
+
+input:focus {
+
+  border: 1px solid #d48b1f;
+
+  box-shadow: 0 0 5px rgba(212,139,31,0.4);
+
+}
+
+
+
+/* ================= التايمر ================= */
+
+#timerBar {
+
+  height: 10px;
+
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+
+  border-radius: 10px;
+
+  margin-top: 12px;
+
+  width: 100%;
+
+  transition: width 1s linear;
+
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+
+}
+
+
+
+/* ================= التصحيح ================= */
+
+#review div {
+
+  background: #f9f9f9;
+
+  padding: 12px;
+
+  margin-top: 10px;
+
+  border-radius: 10px;
+
+  text-align: left;
+
+  border-left: 5px solid #d48b1f;
+
+}
+
+
+
+/* ================= لينك الكتاب ================= */
+
+#bookLink a {
+
+  display: inline-block;
+
+  margin-top: 15px;
+
+  padding: 10px 15px;
+
+  background: #d48b1f;
+
+  color: #fff;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+}
+
+
+
+#bookLink a:hover {
+
+  background: #b87316;
+
+}
+
+
+
+body, .card, button, input, label {
+
+  transition: 0.3s;
+
+}
+
+
+
+/* ================= DARK MODE CLEAN ================= */
+
+body.dark {
+
+  background: linear-gradient(to bottom, #020617, #0f172a);
+
+  color: #e4e6eb;
+
+}
+
+
+
+body.dark .card {
+
+  background: #1e293b;
+
+  border: 1px solid #334155;
+
+  color: #ffffff;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+}
+
+
+
+body.dark h1,
+
+body.dark h2 {
+
+  color: #ffb74d;
+
+}
+
+
+
+body.dark label {
+
+  background: #23272f;
+
+  border: 1px solid #2c313a;
+
+}
+
+
+
+body.dark label:hover {
+
+  background: #2c313a;
+
+}
+
+
+
+body.dark input[type="radio"]:checked + span {
+
+  color: #ffb74d;
+
+  font-weight: bold;
+
+}
+
+
+
+body.dark input[type="radio"]:checked + span::before {
+
+  content: "✔ ";
+
+}
+
+
+
+body.dark button {
+
+  background: linear-gradient(45deg, #2c313a, #3a3f47);
+
+}
+
+
+
+body.dark input {
+
+  background: #23272f;
+
+  color: #fff;
+
+  border: 1px solid #3a3f47;
+
+}
+
+
+
+body.dark input:focus {
+
+  border: 1px solid #ffb74d;
+
+  box-shadow: 0 0 5px rgba(255,183,77,0.4);
+
+}
+
+
+
+body.dark #review div {
+
+  background: #222;
+
+}
+
+
+
+body.dark #timerBar {
+
+  box-shadow: 0 0 10px rgba(255, 183, 77, 0.5);
+
+}
+
+
+
+body.dark #darkBtn,
+body.dark #infoBtn,
+body.dark #homeBtn {
+
+  background: #2a2a2a;
+
+  color: #f3b44a;
+
+}
+
+
+
+/* ================= Loader ================= */
+
+.loader {
+
+  border: 5px solid #eee;
+
+  border-top: 5px solid #d48b1f;
+
+  border-radius: 50%;
+
+  width: 40px;
+
+  height: 40px;
+
+  animation: spin 1s linear infinite;
+
+}
+
+
+
+@keyframes spin {
+
+  100% { transform: rotate(360deg); }
+
+}
+
+/* ================= MOBILE FIX (safe) ================= */
+@media (max-width: 600px) {
+  .page.active {
+    align-items: flex-start;
+    padding: 70px 10px 20px;
+  }
+
+  .card {
+    width: 95%;
+    max-width: 100%;
+  }
+}
+
+
+/* ================= الأزرار العلوية ================= */
+
+#darkBtn, #infoBtn, #homeBtn {
+
+  position: fixed;
+
+  top: 15px;
+
+  width: 45px;
+
+  height: 45px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: #fff;
+
+  color: #d48b1f;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+  z-index: 2000;
+
+  transition: 0.3s;
+
+}
+
+
+
+#homeBtn { right: 15px; }
+
+#infoBtn { right: 75px; }
+
+#darkBtn { right: 135px; }
+
+
+
+#darkBtn:hover,
+#infoBtn:hover,
+#homeBtn:hover {
+
+  transform: scale(1.1);
+
+}
+
+
+
+/* ================= Help Popup ================= */
+
+#help {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: rgba(0,0,0,0.6);
+
+  display: none;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 3000;
+
+}
+
+
+
+#help.active {
+
+  display: flex;
+
+}
+
+
+
+#help .card {
+
+  width: 400px;
+
+  max-width: 90%;
+
+  animation: popup 0.3s ease;
+
+}
+
+
+
+@keyframes popup {
+
+  from { transform: scale(0.7); opacity: 0; }
+
+  to { transform: scale(1); opacity: 1; }
+
+}
+
+
+
+/* ================= PAYMENT UI ================= */
+
+.checkout {
+
+  text-align: left;
+
+}
+
+
+
+.amount {
+
+  margin: 10px 0;
+
+  font-weight: bold;
+
+  color: #d48b1f;
+
+}
+
+
+
+/* ================= PAYMENT BOX ================= */
+
+.pay-box {
+
+  flex: 1;
+
+  padding: 20px;
+
+  border-radius: 18px;
+
+  border: 2px solid transparent;
+
+  background: linear-gradient(145deg, #ffffff, #f3f6fb);
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  text-align: center;
+
+  font-weight: bold;
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+
+
+.pay-box:hover {
+
+  transform: translateY(-6px) scale(1.04);
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+
+}
+
+
+
+.pay-box::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 0%;
+
+  height: 4px;
+
+  background: linear-gradient(90deg, #d48b1f, #f3b44a);
+
+  transition: 0.4s;
+
+}
+
+
+
+.pay-box.active::before {
+
+  width: 100%;
+
+}
+
+
+
+.pay-box.active {
+
+  border: 2px solid #d48b1f;
+
+  background: linear-gradient(145deg, #fff7e6, #fff1cc);
+
+  box-shadow: 0 0 15px rgba(212,139,31,0.6),
+              0 0 30px rgba(212,139,31,0.3);
+
+}
+
+
+
+.pay-box.bankak {
+
+  background: linear-gradient(135deg, #00695c, #009688);
+
+  color: #fff;
+
+  font-size: 18px;
+
+}
+
+
+
+.pay-box.bankak.active {
+
+  border: 2px solid #004d40;
+
+  box-shadow: 0 0 20px rgba(0,150,136,0.7);
+
+}
+
+
+
+.pay-form {
+
+  display: none;
+
+  margin-top: 15px;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  background: #f1f5f9;
+
+  border: 1px solid #ddd;
+
+}
+
+
+
+.pay-form.active {
+
+  display: block;
+
+  box-shadow: 0 0 20px rgba(212,139,31,0.3);
+
+}
+
+
+
+.pay-form input {
+
+  width: 100%;
+
+  padding: 12px;
+
+  margin: 10px 0 15px;
+
+  border-radius: 12px;
+
+  border: 1px solid #ccc;
+
+  font-size: 16px;
+
+}
+
+
+
+.pay-btn {
+
+  margin-top: 15px;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(45deg, #00695c, #009688);
+
+  color: #fff;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+}
+
+
+
+.pay-btn:hover {
+
+  transform: scale(1.06);
+
+  box-shadow: 0 0 15px rgba(212,139,31,0.6);
+
+}
+
+
+
+.error-msg {
+
+  color: red;
+
+  font-size: 14px;
+
+  margin-top: -10px;
+
+  margin-bottom: 10px;
+
+  display: none;
+
+}
+
+
+
+/* ================= RESULT ================= */
+
+.correct {
+
+  background: #e8f5e9;
+
+  border-left: 5px solid #4caf50;
+
+  padding: 12px;
+
+  margin-top: 10px;
+
+  border-radius: 10px;
+
+  text-align: left;
+
+}
+
+
+
+.wrong {
+
+  background: #ffebee;
+
+  border-left: 5px solid #f44336;
+
+  padding: 12px;
+
+  margin-top: 10px;
+
+  border-radius: 10px;
+
+  text-align: left;
+
+}
+
+
+
+body.dark .correct {
+
+  background: #1b2a1f;
+
+  border-left: 5px solid #4caf50;
+
+  color: #fff;
+
+}
+
+
+
+body.dark .wrong {
+
+  background: #2a1b1b;
+
+  border-left: 5px solid #f44336;
+
+  color: #fff;
+
+}
+
+
+
+/* ================= Files Button ================= */
+
+#filesBtn {
+
+  position: fixed;
+
+  bottom: 15px;
+
+  left: 15px;
+
+  width: 45px;
+
+  height: 45px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: #fff;
+
+  color: #d48b1f;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+  z-index: 2000;
+
+  transition: 0.3s;
+
+}
+
+
+
+#filesBtn:hover {
+
+  transform: scale(1.1);
+
+}
+
+
+
+body.dark #filesBtn {
+
+  background: #2a2a2a;
+
+  color: #f3b44a;
+
+}
+
