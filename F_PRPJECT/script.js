@@ -977,7 +977,12 @@ document.getElementById("studentForm").addEventListener("submit", async function
 
 
 function goToForm() {
+let percent = (score / activeQuestions.length) * 100;
 
+  if (percent < 40) {
+    go("fail");
+    return;
+  }
 
 
   // ✅ نحط القيم قبل ما نروح للفورم
